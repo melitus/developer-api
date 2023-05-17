@@ -3,10 +3,10 @@ import httpStatus from 'http-status';
 import { Request, Response, NextFunction } from 'express';
 
 import { formatError } from './format-error';
-import { E_cleverBaseStackError } from './base-error';
+import { DeveloperBaseStackError } from './base-error';
 
 /** Class representing an API Error Response with a related HTTP Status Code **/
-export class APIError extends E_cleverBaseStackError {
+export class APIError extends DeveloperBaseStackError {
   /**
    * Create an Error Object
    * @param {number} status - The HTTP Status Code (e.g. 404)
@@ -26,7 +26,7 @@ export class APIError extends E_cleverBaseStackError {
 }
 
 function isTrustedError(error: Error) {
-  if (error instanceof E_cleverBaseStackError) {
+  if (error instanceof DeveloperBaseStackError) {
     return error.isOperational;
   }
   return false;
@@ -34,7 +34,7 @@ function isTrustedError(error: Error) {
 
 // error handling middleware
 export async function errorHandler(
-  error: E_cleverBaseStackError,
+  error: DeveloperBaseStackError,
   request: Request,
   response: Response,
   next: NextFunction,

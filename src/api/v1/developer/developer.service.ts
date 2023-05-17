@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { _transformDeveloperResponse } from '../developer.transform';
 import DeveloperCollection from './developer.entity';
 import { IDeveloper } from './developer.interface';
 
@@ -16,17 +17,17 @@ const filterDevelopersByLevel = async (level: string): Promise<IDeveloper> => {
   return results;
 };
 
-const findSingleDeveloper = async (developerId: string): Promise<IDeveloper | undefined> => {
+const findSingleDeveloper = async (developerId: string): Promise<IDeveloper | unknown> => {
   const foundDeveloper = await DeveloperCollection.findById(developerId);
-
-  return foundDeveloper;
+  const transformedResponse: IDeveloper | Record<string, unknown> = _transformDeveloperResponse(foundDeveloper);
+  return transformedResponse;
 };
 
-const createDeveloper = async (createDeveloperData: IDeveloper): Promise<IDeveloper> => {
+const createDeveloper = async (createDeveloperData: IDeveloper): Promise<IDeveloper | unknown> => {
   const newDeveloper = new DeveloperCollection(createDeveloperData);
   const savedDeveloperData = await newDeveloper.save();
-
-  return savedDeveloperData;
+  const transformedResponse: IDeveloper | Record<string, unknown> = _transformDeveloperResponse(savedDeveloperData);
+  return transformedResponse;
 };
 
 const updateSingleDeveloperRecord = async (developerId, inputData) => {

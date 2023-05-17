@@ -1,8 +1,8 @@
 import httpStatus from 'http-status';
 
-import { E_cleverBaseStackError } from './base-error';
+import { DeveloperBaseStackError } from './base-error';
 
-export class BadRequestError extends E_cleverBaseStackError {
+export class BadRequestError extends DeveloperBaseStackError {
   constructor(status = httpStatus.BAD_REQUEST, title = 'Validation error', message = 'Bad Request') {
     super(message);
     this.status = status;

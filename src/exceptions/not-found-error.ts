@@ -1,8 +1,8 @@
 import httpStatus from 'http-status';
 
-import { E_cleverBaseStackError } from './base-error';
+import { DeveloperBaseStackError } from './base-error';
 
-export class NotFoundError extends E_cleverBaseStackError {
+export class NotFoundError extends DeveloperBaseStackError {
   constructor(
     status = httpStatus.NOT_FOUND,
     title = 'Resource error',
