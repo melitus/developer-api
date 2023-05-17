@@ -13,11 +13,9 @@ enum Level {
   junior = 'junior',
   senior = 'senior',
 }
-export interface IDeveloperOnDevelopment {
-  _id: string;
-  name: string;
-  email: string;
-  level: Array<string>;
-  updatedAt?: Date;
-  createdAt?: Date;
+
+export interface IDeveloperResponse {
+  success: boolean;
+  message: string;
+  data: Record<string, string>;
 }
