@@ -17,5 +17,5 @@ enum Level {
 export interface IDeveloperResponse {
   success: boolean;
   message: string;
-  data: Record<string, string>;
+  data?: IDeveloper;
 }

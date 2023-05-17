@@ -3,11 +3,12 @@ import httpStatus from 'http-status';
 import { Request, Response } from 'express';
 
 import DeveloperService from './developer.service';
+import { IDeveloperResponse } from './developer.interface';
 interface SearchReqBody {
   level?: string;
 }
 
-const getDevelopers = async (req: Request, res: Response) => {
+const getDevelopers = async (req: Request, res: Response<IDeveloperResponse>) => {
   try {
     const foundDevelopers = await DeveloperService.getDevelopers();
     res
@@ -20,12 +21,14 @@ const getDevelopers = async (req: Request, res: Response) => {
   }
 };
 
-const getSingleDeveloper = async (req: Request, res: Response) => {
+const getSingleDeveloper = async (req: Request, res: Response<IDeveloperResponse>) => {
   const { developerId } = req.params;
   try {
     const foundDeveloper = await DeveloperService.findSingleDeveloper(developerId);
     if (!foundDeveloper) {
-      res.status(httpStatus.NOT_FOUND).send({ success: true, msg: 'A developer does not exist', data: foundDeveloper });
+      res
+        .status(httpStatus.NOT_FOUND)
+        .json({ success: true, message: 'A developer does not exist', data: foundDeveloper });
     } else {
       res
         .status(httpStatus.OK)
@@ -38,7 +41,7 @@ const getSingleDeveloper = async (req: Request, res: Response) => {
   }
 };
 
-const createDeveloper = async (req: Request, res: Response) => {
+const createDeveloper = async (req: Request, res: Response<IDeveloperResponse>) => {
   const inputData = req.body;
   try {
     const emailInUse = await DeveloperService.isEmailInUse(inputData);
