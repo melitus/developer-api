@@ -1,8 +1,8 @@
-# Developer API coding task
+# Developer API Interface
 
 ## Design and implementation of Developer Api interface
 
-# Coding Case
+# Problem description
 
 The following is about designing and implementing an interface with the following main functions:
 
@@ -47,34 +47,11 @@ The rest is up to you.
 
 - Deleting a developer
 
-
-
-2. configuration of environments
-
- A configuration is to be used to distinguish between the environments
-
-The following environments are predefined:
-- Development
-- Production
-
-
-
-3. persistence of the data
-
-The data should be stored differently for each environment
-
-- For Development:        In-Memory Persistence
-                                        This is to be implemented itself
-
-- For Production:            Any database 
-
-4. orchestration
+2. orchestration
 
 - The application is to be implemented as a Docker container
 
 - The application and the Redis database should be integrated into docker-compose.
-
-
 
 
 # Tools
@@ -94,13 +71,13 @@ The easiest way to get started is to clone the repository:
 # clone the repository
 
 ```
-git clone https://github.com/melitus/eClever-backend-coding-task.git
+git clone https://github.com/melitus/developer-api.git
 ```
 
 # Change directory
 
 ```
-cd eClever-backend-coding-task
+cd developer-api
 ```
 
 # Install NPM dependencies

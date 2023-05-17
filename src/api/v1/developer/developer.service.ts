@@ -16,8 +16,8 @@ const filterDevelopersByLevel = async (level: string): Promise<IDeveloper> => {
   return results;
 };
 
-const findSingleDeveloper = async (id: string): Promise<IDeveloper | undefined> => {
-  const foundDeveloper = await DeveloperCollection.findById(id);
+const findSingleDeveloper = async (developerId: string): Promise<IDeveloper | undefined> => {
+  const foundDeveloper = await DeveloperCollection.findById(developerId);
 
   return foundDeveloper;
 };
