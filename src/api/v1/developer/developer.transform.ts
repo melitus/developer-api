@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { IDeveloper } from './developer/developer.interface';
+import { IDeveloper } from './developer.interface';
 
 export const _transformDeveloperResponse = (developer: IDeveloper): IDeveloper | {} => {
   if (!developer) {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { _transformDeveloperResponse } from '../developer.transform';
+import { _transformDeveloperResponse } from './developer.transform';
 import DeveloperCollection from './developer.entity';
 import { IDeveloper } from './developer.interface';
 
